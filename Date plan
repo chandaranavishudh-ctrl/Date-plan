@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Invitation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-100 min-h-screen flex items-center justify-center font-sans p-4">
+
+  <div class="bg-pink-50 p-8 rounded-3xl shadow-xl max-w-md w-full text-center border-4 border-pink-200">
+    
+    <!-- Slide 1 -->
+    <div id="slide1">
+      <h1 class="text-2xl font-bold text-gray-800 mb-2">Hey! Let's just skip the small talk ✨</h1>
+      <p class="text-gray-600 mb-6">I want to take you out!</p>
+      <img src="https://placekitten.com/300/300" class="w-48 h-48 mx-auto rounded-2xl mb-6 object-cover shadow">
+      <button onclick="nextSlide(2)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition">
+        Let's do this
+      </button>
+    </div>
+
+    <!-- Slide 2 -->
+    <div id="slide2" class="hidden">
+      <h1 class="text-2xl font-bold text-gray-800 mb-2">Will you go out with me?</h1>
+      <p class="text-gray-600 mb-6">Take your time, but remember there is only one correct answer 😉</p>
+      <button onclick="nextSlide(3)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg block w-full mb-3">
+        Yes 💕
+      </button>
+    </div>
+
+    <!-- Slide 3 -->
+    <div id="slide3" class="hidden">
+      <h1 class="text-2xl font-bold text-gray-800 mb-4">I knew you would say yes! 🎉</h1>
+      <button onclick="nextSlide(4)" class="bg-rose-500 text-white font-bold py-3 px-8 rounded-full">
+        Continue →
+      </button>
+    </div>
+
+    <!-- Slide 4 -->
+    <div id="slide4" class="hidden">
+      <h1 class="text-2xl font-bold text-gray-800 mb-4">How do you want to spend the day?</h1>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <button onclick="nextSlide(5)" class="p-4 bg-white rounded-xl shadow hover:bg-pink-100 border border-pink-200 font-semibold">🎳 Bowling</button>
+        <button onclick="nextSlide(5)" class="p-4 bg-white rounded-xl shadow hover:bg-pink-100 border border-pink-200 font-semibold">☕ Coffee & Cake</button>
+        <button onclick="nextSlide(5)" class="p-4 bg-white rounded-xl shadow hover:bg-pink-100 border border-pink-200 font-semibold">🍿 Movie</button>
+        <button onclick="nextSlide(5)" class="p-4 bg-white rounded-xl shadow hover:bg-pink-100 border border-pink-200 font-semibold">🍦 Ice Cream</button>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div id="slide5" class="hidden">
+      <h1 class="text-2xl font-bold text-gray-800 mb-2">See you then! ✨</h1>
+      <p class="text-gray-600">I'll pick you up soon.</p>
+    </div>
+
+  </div>
+
+  <script>
+    function nextSlide(slideNumber) {
+      document.querySelectorAll('body > div > div').forEach(el => el.classList.add('hidden'));
+      document.getElementById('slide' + slideNumber).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
