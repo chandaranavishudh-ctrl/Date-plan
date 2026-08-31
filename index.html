@@ -5,11 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Special Date Invitation 💖</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
   <style>
     body {
       background-color: #ffe4e9;
       background-image: radial-gradient(#ffb6c1 1.5px, transparent 1.5px);
       background-size: 24px 24px;
+    }
+
+    /* Pop-in animation for slides */
+    .animate-pop {
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
   </style>
 </head>
@@ -18,11 +37,11 @@
   <div class="bg-pink-50 border-4 border-pink-200 rounded-3xl shadow-2xl max-w-lg w-full p-6 text-center relative overflow-hidden">
     
     <!-- Slide 1: Welcome -->
-    <div id="slide1" class="slide">
+    <div id="slide1" class="slide animate-pop">
       <img src="https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?auto=format&fit=crop&w=400&q=80" class="w-48 h-48 object-cover rounded-2xl mx-auto mb-4 shadow-md border-2 border-pink-300" alt="Cute Cat">
       <h1 class="text-2xl font-extrabold text-pink-700 mb-2">Hey! Let's just skip the small talk 🌸</h1>
       <p class="text-gray-600 mb-6 font-medium">I want to take you out ✨</p>
-      <button onclick="nextSlide(2)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+      <button onclick="nextSlide(2)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
         Let's do this
       </button>
     </div>
@@ -33,10 +52,10 @@
       <p class="text-gray-600 mb-4 text-xs font-medium">Take your time, but remember there is only one correct answer...</p>
       <img src="https://i.imgflip.com/4/30b1gx.jpg" class="w-44 h-44 object-cover rounded-2xl mx-auto mb-6 shadow-md border-2 border-pink-300" alt="Gru Meme">
       <div class="flex justify-center gap-4">
-        <button onclick="nextSlide(3)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+        <button onclick="sayYes()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-110 active:scale-95 animate-bounce">
           Yes 💕
         </button>
-        <button onclick="triggerNoLoop()" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition">
+        <button onclick="triggerNoLoop()" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform active:scale-95">
           No ❌
         </button>
       </div>
@@ -46,7 +65,7 @@
     <div id="slide3" class="slide hidden">
       <img src="https://i.ibb.co/3sZq14Y/joe-goldberg.jpg" onError="this.src='https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400'" class="w-48 h-48 object-cover rounded-2xl mx-auto mb-4 shadow-md border-2 border-pink-300" alt="Joe Goldberg">
       <h1 class="text-2xl font-extrabold text-pink-700 mb-4">I knew you would say yes!! 😎</h1>
-      <button onclick="nextSlide(4)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+      <button onclick="nextSlide(4)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
         Continue →
       </button>
     </div>
@@ -57,24 +76,24 @@
       <p class="text-xs text-gray-500 mb-4">Select your favorite vibe!</p>
       
       <div class="grid grid-cols-2 gap-3 mb-6 text-left">
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1538510001314-716c02de4324?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🎳 Bowling</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">☕ Coffee & Cake</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🍿 Movie</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🍦 Ice Cream</span>
         </div>
       </div>
-      <button onclick="nextSlide(5)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition">
+      <button onclick="nextSlide(5)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
         Next →
       </button>
     </div>
@@ -85,24 +104,24 @@
       <p class="text-xs text-gray-500 mb-4">(100% vegetarian goodness 🌱)</p>
 
       <div class="grid grid-cols-2 gap-3 mb-6 text-left">
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🍜 Indo-Chinese</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🧈 North Indian</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🍕 Italian Pizza</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🍱 Veg Sushi</span>
         </div>
       </div>
-      <button onclick="nextSlide(6)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition">
+      <button onclick="nextSlide(6)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
         Next →
       </button>
     </div>
@@ -113,24 +132,24 @@
       <p class="text-xs text-gray-500 mb-4">Pick your favorite!</p>
 
       <div class="grid grid-cols-2 gap-3 mb-6 text-left">
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🌹 Red Roses</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🌻 Sunflowers</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🌷 Tulips</span>
         </div>
-        <div class="bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition cursor-pointer">
+        <div onclick="selectCard(this)" class="option-card bg-white p-3 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 hover:shadow-md transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
           <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
           <span class="font-bold text-xs text-gray-700">🍫 Chocolates</span>
         </div>
       </div>
-      <button onclick="nextSlide(7)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition">
+      <button onclick="nextSlide(7)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
         Next →
       </button>
     </div>
@@ -140,7 +159,7 @@
       <h1 class="text-xl font-extrabold text-pink-700 mb-2">Pick a date below 📅</h1>
       <p class="text-xs text-gray-500 mb-6">So I can clear my schedule!</p>
       <input type="date" class="border-2 border-pink-300 rounded-2xl p-3 w-full mb-6 font-semibold text-center text-gray-700 focus:outline-none focus:border-pink-500">
-      <button onclick="nextSlide(8)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition">
+      <button onclick="finishDate()" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
         Confirm Date 💕
       </button>
     </div>
@@ -156,10 +175,10 @@
 
   <!-- Error Loop Modal for "No" button -->
   <div id="errorModal" class="hidden fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4">
-    <div class="bg-white p-6 rounded-3xl max-w-xs text-center border-4 border-rose-300 shadow-2xl">
+    <div class="bg-white p-6 rounded-3xl max-w-xs text-center border-4 border-rose-300 shadow-2xl animate-pop">
       <h2 class="text-xl font-extrabold text-rose-600 mb-2">Error 404! 🚨</h2>
       <p class="text-sm text-gray-600 mb-4 font-medium" id="modalText">"No" is not an allowed answer! Please select "Yes" 😉</p>
-      <button onclick="closeModal()" class="bg-rose-500 text-white font-bold py-2 px-6 rounded-full shadow hover:bg-rose-600 transition">
+      <button onclick="closeModal()" class="bg-rose-500 text-white font-bold py-2 px-6 rounded-full shadow hover:bg-rose-600 transition transform hover:scale-105">
         Try Again 🔁
       </button>
     </div>
@@ -167,8 +186,40 @@
 
   <script>
     function nextSlide(slideNumber) {
-      document.querySelectorAll('.slide').forEach(el => el.classList.add('hidden'));
-      document.getElementById('slide' + slideNumber).classList.remove('hidden');
+      document.querySelectorAll('.slide').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('animate-pop');
+      });
+      const next = document.getElementById('slide' + slideNumber);
+      next.classList.remove('hidden');
+      next.classList.add('animate-pop');
+    }
+
+    function sayYes() {
+      // Trigger Confetti
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+      nextSlide(3);
+    }
+
+    function finishDate() {
+      // Big Confetti Celebration
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.5 }
+      });
+      nextSlide(8);
+    }
+
+    function selectCard(card) {
+      // Toggle active border ring animation on cards
+      card.classList.toggle('ring-4');
+      card.classList.toggle('ring-rose-400');
+      card.classList.toggle('bg-pink-100');
     }
 
     const noMessages = [
