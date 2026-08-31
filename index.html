@@ -3,48 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Skip the Small Talk</title>
+    <title>Let's Skip The Small Talk 🌸</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
-            height: 100%;
-            width: 100%;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            background-color: #fce4ec;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #fce4ec;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 10px;
         }
-        .container {
+        .wrapper {
             position: relative;
             width: 100%;
-            max-width: 900px;
+            max-width: 960px;
             aspect-ratio: 16 / 9;
-            background: url('cover.jpg') no-repeat center center/contain;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: url('cover.jpg') no-repeat center center;
+            background-size: contain;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        .action-btn {
+        /* Clickable area positioned precisely over the "Let's do this" button */
+        .btn-overlay {
             position: absolute;
-            top: 58%; /* Aligns over the 'Let's do this' button area */
-            width: 22%;
-            height: 9%;
-            background: transparent;
-            border: none;
+            top: 58.5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 23%;
+            height: 9.5%;
+            border-radius: 25px;
             cursor: pointer;
-            border-radius: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-overlay:hover {
+            transform: translate(-50%, -50%) scale(1.04);
+            box-shadow: 0 4px 15px rgba(255, 105, 135, 0.4);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <a href="page2.html" class="action-btn" aria-label="Go to Page 2"></a>
+    <div class="wrapper">
+        <a href="page2.html" class="btn-overlay" aria-label="Let's do this"></a>
     </div>
 
 </body>
