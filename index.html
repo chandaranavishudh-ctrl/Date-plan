@@ -1,278 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skip the Small Talk 🌸</title>
-  
-  <!-- Google Fonts for Cute Rounded Typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: 'Fredoka', cursive, sans-serif;
-      background-color: #fde8ed;
-      /* Repeating soft heart pattern background */
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="%23f7c5d0" opacity="0.4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
-      background-size: 55px 55px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow-x: hidden;
-      color: #3e282a;
-      padding: 20px;
-    }
-
-    /* Content Layout */
-    .content-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      z-index: 10;
-      max-width: 650px;
-    }
-
-    /* Floating Envelope Icon */
-    .envelope-icon {
-      width: 140px;
-      height: 100px;
-      margin-bottom: 25px;
-      filter: drop-shadow(0 8px 15px rgba(220, 140, 160, 0.3));
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* Main Typography */
-    h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: #392829;
-      line-height: 1.25;
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
-    }
-
-    h2 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #4a3436;
-      margin-bottom: 30px;
-    }
-
-    /* Action Button */
-    .btn-action {
-      background: #ff5e62;
-      color: #ffffff;
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      padding: 14px 38px;
-      border-radius: 50px;
-      border: 3.5px solid #392829;
-      box-shadow: 0 6px 0px #392829;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-
-    .btn-action:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 9px 0px #392829;
-      background: #ff474c;
-    }
-
-    .btn-action:active {
-      transform: translateY(3px);
-      box-shadow: 0 3px 0px #392829;
-    }
-
-    /* Bear Graphic Container */
-    .bear-container {
-      width: 180px;
-      height: 180px;
-      margin-top: 10px;
-    }
-
-    /* Decorative Corner Elements */
-    .corner-ribbon {
-      position: absolute;
-      top: 0;
-      width: 220px;
-      height: 140px;
-      z-index: 5;
-      pointer-events: none;
-    }
-
-    .corner-ribbon.left {
-      left: 0;
-    }
-
-    .corner-ribbon.right {
-      right: 0;
-      transform: scaleX(-1);
-    }
-
-    .corner-bouquet {
-      position: absolute;
-      bottom: -10px;
-      width: 220px;
-      height: 220px;
-      z-index: 5;
-      pointer-events: none;
-    }
-
-    .corner-bouquet.left {
-      left: -10px;
-    }
-
-    .corner-bouquet.right {
-      right: -10px;
-      transform: scaleX(-1);
-    }
-
-    /* Mobile Responsive Scaling */
-    @media (max-width: 768px) {
-      h1 { font-size: 1.8rem; }
-      h2 { font-size: 1.2rem; }
-      .btn-action { font-size: 1.2rem; padding: 12px 30px; }
-      .envelope-icon { width: 100px; height: 75px; }
-      .bear-container { width: 140px; height: 140px; }
-      .corner-ribbon { width: 140px; }
-      .corner-bouquet { width: 140px; height: 140px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Skip the Small Talk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fce4ec;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            background: url('cover.jpg') no-repeat center center/contain;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .action-btn {
+            position: absolute;
+            top: 58%; /* Aligns over the 'Let's do this' button area */
+            width: 22%;
+            height: 9%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Top Ribbon Decorations -->
-  <svg class="corner-ribbon left" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 10 Q 60 5, 90 40 T 180 30" stroke="#f687a4" stroke-width="6" fill="none" stroke-linecap="round"/>
-    <path d="M0 25 Q 50 20, 85 55 T 165 40" stroke="#fba3ba" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <g transform="translate(140, 25)">
-      <path d="M0,0 C-20,-20 -35,5 0,0 C20,-20 35,5 0,0 Z" fill="#f687a4" stroke="#392829" stroke-width="2.5"/>
-      <path d="M0,0 C-25,10 -15,30 -5,40" stroke="#f687a4" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <path d="M0,0 C10,15 25,25 35,35" stroke="#f687a4" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="5" fill="#e75480" stroke="#392829" stroke-width="2"/>
-    </g>
-  </svg>
-
-  <svg class="corner-ribbon right" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 10 Q 60 5, 90 40 T 180 30" stroke="#f687a4" stroke-width="6" fill="none" stroke-linecap="round"/>
-    <path d="M0 25 Q 50 20, 85 55 T 165 40" stroke="#fba3ba" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <g transform="translate(140, 25)">
-      <path d="M0,0 C-20,-20 -35,5 0,0 C20,-20 35,5 0,0 Z" fill="#f687a4" stroke="#392829" stroke-width="2.5"/>
-      <path d="M0,0 C-25,10 -15,30 -5,40" stroke="#f687a4" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <path d="M0,0 C10,15 25,25 35,35" stroke="#f687a4" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="5" fill="#e75480" stroke="#392829" stroke-width="2"/>
-    </g>
-  </svg>
-
-  <!-- Main Content -->
-  <div class="content-container">
-    
-    <!-- Top Floating Envelope -->
-    <svg class="envelope-icon" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M 10 30 L 150 30 L 150 105 A 10 10 0 0 1 140 115 L 20 115 A 10 10 0 0 1 10 105 Z" fill="#f8b6ce" stroke="#392829" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M 10 30 L 80 80 L 150 30" fill="#fcd2df" stroke="#392829" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M 10 30 L 80 75 L 150 30 Q 150 15 130 15 L 30 15 Q 10 15 10 30 Z" fill="#fbb0c8" stroke="#392829" stroke-width="3.5" stroke-linejoin="round"/>
-      <!-- Heart Seal -->
-      <path d="M 80 70 C 75 60 63 65 67 74 C 70 80 80 87 80 87 C 80 87 90 80 93 74 C 97 65 85 60 80 70 Z" fill="#e63946" stroke="#392829" stroke-width="2"/>
-    </svg>
-
-    <!-- Headings -->
-    <h1>Hey! Let's just skip the<br>small talk 🌸</h1>
-    <h2>I want to take you out ✨</h2>
-
-    <!-- Action Button -->
-    <button class="btn-action" onclick="alert('Yay! ❤️ It\'s a date!')">Let's do this</button>
-
-    <!-- Cute Teddy Bear Graphic -->
-    <div class="bear-container">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="55" r="24" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
-        <circle cx="50" cy="55" r="13" fill="#f0caad"/>
-        <circle cx="150" cy="55" r="24" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
-        <circle cx="150" cy="55" r="13" fill="#f0caad"/>
-        
-        <ellipse cx="52" cy="170" rx="20" ry="16" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
-        <ellipse cx="52" cy="170" rx="11" ry="8" fill="#f0caad"/>
-        <ellipse cx="148" cy="170" rx="20" ry="16" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
-        <ellipse cx="148" cy="170" rx="11" ry="8" fill="#f0caad"/>
-
-        <ellipse cx="100" cy="135" rx="52" ry="46" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
-        
-        <ellipse cx="75" cy="142" rx="15" ry="22" fill="#d3a37b" stroke="#392829" stroke-width="4" transform="rotate(20 75 142)"/>
-        <ellipse cx="125" cy="142" rx="15" ry="22" fill="#d3a37b" stroke="#392829" stroke-width="4" transform="rotate(-20 125 142)"/>
-
-        <ellipse cx="100" cy="88" rx="55" ry="46" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
-        
-        <ellipse cx="100" cy="97" rx="18" ry="13" fill="#f0caad" stroke="#392829" stroke-width="2.5"/>
-        <ellipse cx="100" cy="92" rx="6" ry="4" fill="#392829"/>
-        <path d="M 100 96 L 100 102" stroke="#392829" stroke-width="2.5" stroke-linecap="round"/>
-        
-        <circle cx="76" cy="85" r="5" fill="#392829"/>
-        <circle cx="124" cy="85" r="5" fill="#392829"/>
-        
-        <ellipse cx="66" cy="94" rx="7" ry="5" fill="#f3a7b5" opacity="0.8"/>
-        <ellipse cx="134" cy="94" rx="7" ry="5" fill="#f3a7b5" opacity="0.8"/>
-      </svg>
+    <div class="container">
+        <a href="page2.html" class="action-btn" aria-label="Go to Page 2"></a>
     </div>
-
-  </div>
-
-  <!-- Bottom Left Bouquet -->
-  <svg class="corner-bouquet left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <g transform="rotate(25 100 100)">
-      <path d="M 60 120 L 20 190 Q 60 200 110 180 L 140 110 Z" fill="#fcc6d7" stroke="#392829" stroke-width="4" stroke-linejoin="round"/>
-      <path d="M 40 100 L 10 170 Q 50 190 120 150 L 120 90 Z" fill="#f8a7be" stroke="#392829" stroke-width="3" stroke-linejoin="round"/>
-      
-      <path d="M 45 75 C 35 55 45 40 55 40 C 60 40 65 48 65 48 C 65 48 70 40 75 40 C 85 40 95 55 85 75 Z" fill="#c9184a" stroke="#392829" stroke-width="3"/>
-      <path d="M 75 60 C 65 40 75 25 85 25 C 90 25 95 33 95 33 C 95 33 100 25 105 25 C 115 25 125 40 115 60 Z" fill="#ff4d6d" stroke="#392829" stroke-width="3"/>
-      <path d="M 105 80 C 95 60 105 45 115 45 C 120 45 125 53 125 53 C 125 53 130 45 135 45 C 145 45 155 60 145 80 Z" fill="#a4133c" stroke="#392829" stroke-width="3"/>
-      
-      <path d="M 55 80 Q 70 110 80 130" stroke="#52b788" stroke-width="5" stroke-linecap="round"/>
-      <path d="M 90 65 Q 90 110 85 130" stroke="#2d6a4f" stroke-width="5" stroke-linecap="round"/>
-      <path d="M 120 85 Q 100 110 90 130" stroke="#52b788" stroke-width="5" stroke-linecap="round"/>
-      
-      <path d="M 50 140 C 70 150 90 135 110 130" stroke="#e63946" stroke-width="6" fill="none" stroke-linecap="round"/>
-    </g>
-  </svg>
-
-  <!-- Bottom Right Bouquet -->
-  <svg class="corner-bouquet right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <g transform="rotate(25 100 100)">
-      <path d="M 60 120 L 20 190 Q 60 200 110 180 L 140 110 Z" fill="#fcc6d7" stroke="#392829" stroke-width="4" stroke-linejoin="round"/>
-      <path d="M 40 100 L 10 170 Q 50 190 120 150 L 120 90 Z" fill="#f8a7be" stroke="#392829" stroke-width="3" stroke-linejoin="round"/>
-      
-      <path d="M 45 75 C 35 55 45 40 55 40 C 60 40 65 48 65 48 C 65 48 70 40 75 40 C 85 40 95 55 85 75 Z" fill="#c9184a" stroke="#392829" stroke-width="3"/>
-      <path d="M 75 60 C 65 40 75 25 85 25 C 90 25 95 33 95 33 C 95 33 100 25 105 25 C 115 25 125 40 115 60 Z" fill="#ff4d6d" stroke="#392829" stroke-width="3"/>
-      <path d="M 105 80 C 95 60 105 45 115 45 C 120 45 125 53 125 53 C 125 53 130 45 135 45 C 145 45 155 60 145 80 Z" fill="#a4133c" stroke="#392829" stroke-width="3"/>
-      
-      <path d="M 55 80 Q 70 110 80 130" stroke="#52b788" stroke-width="5" stroke-linecap="round"/>
-      <path d="M 90 65 Q 90 110 85 130" stroke="#2d6a4f" stroke-width="5" stroke-linecap="round"/>
-      <path d="M 120 85 Q 100 110 90 130" stroke="#52b788" stroke-width="5" stroke-linecap="round"/>
-      
-      <path d="M 50 140 C 70 150 90 135 110 130" stroke="#e63946" stroke-width="6" fill="none" stroke-linecap="round"/>
-    </g>
-  </svg>
 
 </body>
 </html>
