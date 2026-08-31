@@ -3,260 +3,276 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Special Date Invitation 💖</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <title>Skip the Small Talk 🌸</title>
+  
+  <!-- Google Fonts for Cute Rounded Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
   
   <style>
-    /* Responsive Soft Animated Background */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background: linear-gradient(-45deg, #ffe4e9, #ffd1dc, #fff0f5, #ffe4e9);
-      background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite;
+      min-height: 100vh;
+      font-family: 'Fredoka', cursive, sans-serif;
+      background-color: #fde8ed;
+      /* Repeating soft heart pattern background */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="%23f7c5d0" opacity="0.4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+      background-size: 55px 55px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
       overflow-x: hidden;
+      color: #3e282a;
+      padding: 20px;
     }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Content Layout */
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+      max-width: 650px;
     }
 
-    /* Floating background hearts */
-    .bg-heart {
+    /* Floating Envelope Icon */
+    .envelope-icon {
+      width: 140px;
+      height: 100px;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 8px 15px rgba(220, 140, 160, 0.3));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Main Typography */
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #392829;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #4a3436;
+      margin-bottom: 30px;
+    }
+
+    /* Action Button */
+    .btn-action {
+      background: #ff5e62;
+      color: #ffffff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 14px 38px;
+      border-radius: 50px;
+      border: 3.5px solid #392829;
+      box-shadow: 0 6px 0px #392829;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 9px 0px #392829;
+      background: #ff474c;
+    }
+
+    .btn-action:active {
+      transform: translateY(3px);
+      box-shadow: 0 3px 0px #392829;
+    }
+
+    /* Bear Graphic Container */
+    .bear-container {
+      width: 180px;
+      height: 180px;
+      margin-top: 10px;
+    }
+
+    /* Decorative Corner Elements */
+    .corner-ribbon {
       position: absolute;
-      color: rgba(255, 182, 193, 0.45);
-      font-size: 20px;
-      user-select: none;
+      top: 0;
+      width: 220px;
+      height: 140px;
+      z-index: 5;
       pointer-events: none;
-      animation: floatUp 8s linear infinite;
     }
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(105vh) scale(0.8) rotate(0deg);
-        opacity: 0.2;
-      }
-      50% {
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.2) rotate(360deg);
-        opacity: 0;
-      }
+    .corner-ribbon.left {
+      left: 0;
     }
 
-    /* Pop animation for slides */
-    .animate-pop {
-      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    .corner-ribbon.right {
+      right: 0;
+      transform: scaleX(-1);
     }
 
-    @keyframes popIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.9) translateY(10px);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
+    .corner-bouquet {
+      position: absolute;
+      bottom: -10px;
+      width: 220px;
+      height: 220px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .corner-bouquet.left {
+      left: -10px;
+    }
+
+    .corner-bouquet.right {
+      right: -10px;
+      transform: scaleX(-1);
+    }
+
+    /* Mobile Responsive Scaling */
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.2rem; }
+      .btn-action { font-size: 1.2rem; padding: 12px 30px; }
+      .envelope-icon { width: 100px; height: 75px; }
+      .bear-container { width: 140px; height: 140px; }
+      .corner-ribbon { width: 140px; }
+      .corner-bouquet { width: 140px; height: 140px; }
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 font-sans text-gray-800 relative">
+<body>
 
-  <!-- Floating Live Background Hearts -->
-  <div class="bg-heart" style="left: 10%; animation-duration: 9s; animation-delay: 0s;">🌸</div>
-  <div class="bg-heart" style="left: 25%; animation-duration: 7s; animation-delay: 2s;">💖</div>
-  <div class="bg-heart" style="left: 45%; animation-duration: 10s; animation-delay: 1s;">✨</div>
-  <div class="bg-heart" style="left: 70%; animation-duration: 8s; animation-delay: 3s;">💗</div>
-  <div class="bg-heart" style="left: 85%; animation-duration: 11s; animation-delay: 0.5s;">🌸</div>
+  <!-- Top Ribbon Decorations -->
+  <svg class="corner-ribbon left" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 10 Q 60 5, 90 40 T 180 30" stroke="#f687a4" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M0 25 Q 50 20, 85 55 T 165 40" stroke="#fba3ba" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <g transform="translate(140, 25)">
+      <path d="M0,0 C-20,-20 -35,5 0,0 C20,-20 35,5 0,0 Z" fill="#f687a4" stroke="#392829" stroke-width="2.5"/>
+      <path d="M0,0 C-25,10 -15,30 -5,40" stroke="#f687a4" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M0,0 C10,15 25,25 35,35" stroke="#f687a4" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="5" fill="#e75480" stroke="#392829" stroke-width="2"/>
+    </g>
+  </svg>
 
-  <!-- Main Card Box -->
-  <div class="bg-white/90 backdrop-blur-md border-4 border-pink-200 rounded-3xl shadow-2xl w-full max-w-md p-5 sm:p-6 text-center relative z-10">
+  <svg class="corner-ribbon right" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 10 Q 60 5, 90 40 T 180 30" stroke="#f687a4" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M0 25 Q 50 20, 85 55 T 165 40" stroke="#fba3ba" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <g transform="translate(140, 25)">
+      <path d="M0,0 C-20,-20 -35,5 0,0 C20,-20 35,5 0,0 Z" fill="#f687a4" stroke="#392829" stroke-width="2.5"/>
+      <path d="M0,0 C-25,10 -15,30 -5,40" stroke="#f687a4" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M0,0 C10,15 25,25 35,35" stroke="#f687a4" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="5" fill="#e75480" stroke="#392829" stroke-width="2"/>
+    </g>
+  </svg>
+
+  <!-- Main Content -->
+  <div class="content-container">
     
-    <!-- Slide 1: Welcome -->
-    <div id="slide1" class="slide animate-pop">
-      <!-- PASTE YOUR CUSTOM IMAGE URL IN THE 'src' BELOW -->
-      <img src="https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?auto=format&fit=crop&w=400&q=80" 
-           class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-2xl mx-auto mb-4 shadow-md border-2 border-pink-300" alt="Cute Pic">
-      <h1 class="text-xl sm:text-2xl font-extrabold text-pink-700 mb-2">Hey! Let's just skip the small talk 🌸</h1>
-      <p class="text-sm text-gray-600 mb-6 font-medium">I want to take you out ✨</p>
-      <button onclick="nextSlide(2)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
-        Let's do this
-      </button>
+    <!-- Top Floating Envelope -->
+    <svg class="envelope-icon" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 10 30 L 150 30 L 150 105 A 10 10 0 0 1 140 115 L 20 115 A 10 10 0 0 1 10 105 Z" fill="#f8b6ce" stroke="#392829" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M 10 30 L 80 80 L 150 30" fill="#fcd2df" stroke="#392829" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M 10 30 L 80 75 L 150 30 Q 150 15 130 15 L 30 15 Q 10 15 10 30 Z" fill="#fbb0c8" stroke="#392829" stroke-width="3.5" stroke-linejoin="round"/>
+      <!-- Heart Seal -->
+      <path d="M 80 70 C 75 60 63 65 67 74 C 70 80 80 87 80 87 C 80 87 90 80 93 74 C 97 65 85 60 80 70 Z" fill="#e63946" stroke="#392829" stroke-width="2"/>
+    </svg>
+
+    <!-- Headings -->
+    <h1>Hey! Let's just skip the<br>small talk 🌸</h1>
+    <h2>I want to take you out ✨</h2>
+
+    <!-- Action Button -->
+    <button class="btn-action" onclick="alert('Yay! ❤️ It\'s a date!')">Let's do this</button>
+
+    <!-- Cute Teddy Bear Graphic -->
+    <div class="bear-container">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="55" r="24" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
+        <circle cx="50" cy="55" r="13" fill="#f0caad"/>
+        <circle cx="150" cy="55" r="24" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
+        <circle cx="150" cy="55" r="13" fill="#f0caad"/>
+        
+        <ellipse cx="52" cy="170" rx="20" ry="16" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
+        <ellipse cx="52" cy="170" rx="11" ry="8" fill="#f0caad"/>
+        <ellipse cx="148" cy="170" rx="20" ry="16" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
+        <ellipse cx="148" cy="170" rx="11" ry="8" fill="#f0caad"/>
+
+        <ellipse cx="100" cy="135" rx="52" ry="46" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
+        
+        <ellipse cx="75" cy="142" rx="15" ry="22" fill="#d3a37b" stroke="#392829" stroke-width="4" transform="rotate(20 75 142)"/>
+        <ellipse cx="125" cy="142" rx="15" ry="22" fill="#d3a37b" stroke="#392829" stroke-width="4" transform="rotate(-20 125 142)"/>
+
+        <ellipse cx="100" cy="88" rx="55" ry="46" fill="#d3a37b" stroke="#392829" stroke-width="4"/>
+        
+        <ellipse cx="100" cy="97" rx="18" ry="13" fill="#f0caad" stroke="#392829" stroke-width="2.5"/>
+        <ellipse cx="100" cy="92" rx="6" ry="4" fill="#392829"/>
+        <path d="M 100 96 L 100 102" stroke="#392829" stroke-width="2.5" stroke-linecap="round"/>
+        
+        <circle cx="76" cy="85" r="5" fill="#392829"/>
+        <circle cx="124" cy="85" r="5" fill="#392829"/>
+        
+        <ellipse cx="66" cy="94" rx="7" ry="5" fill="#f3a7b5" opacity="0.8"/>
+        <ellipse cx="134" cy="94" rx="7" ry="5" fill="#f3a7b5" opacity="0.8"/>
+      </svg>
     </div>
 
-    <!-- Slide 2: Will you go out with me? -->
-    <div id="slide2" class="slide hidden">
-      <h1 class="text-xl sm:text-2xl font-extrabold text-pink-700 mb-2">Will you go out with me? 🥺</h1>
-      <p class="text-gray-600 mb-4 text-xs font-medium">Take your time, but remember there is only one correct answer...</p>
-      <!-- PASTE YOUR CUSTOM IMAGE URL IN THE 'src' BELOW -->
-      <img src="https://i.imgflip.com/4/30b1gx.jpg" 
-           class="w-40 h-40 sm:w-44 sm:h-44 object-cover rounded-2xl mx-auto mb-6 shadow-md border-2 border-pink-300" alt="Meme Pic">
-      <div class="flex justify-center gap-4">
-        <button onclick="sayYes()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-110 active:scale-95 animate-bounce">
-          Yes 💕
-        </button>
-        <button onclick="triggerNoLoop()" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform active:scale-95">
-          No ❌
-        </button>
-      </div>
-    </div>
+  </div>
 
-    <!-- Slide 3: Confirmation Meme -->
-    <div id="slide3" class="slide hidden">
-      <!-- PASTE YOUR CUSTOM IMAGE URL IN THE 'src' BELOW -->
-      <img src="https://i.ibb.co/3sZq14Y/joe-goldberg.jpg" onError="this.src='https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400'" 
-           class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-2xl mx-auto mb-4 shadow-md border-2 border-pink-300" alt="Reaction Pic">
-      <h1 class="text-xl sm:text-2xl font-extrabold text-pink-700 mb-4">I knew you would say yes!! 😎</h1>
-      <button onclick="nextSlide(4)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
-        Continue →
-      </button>
-    </div>
-
-    <!-- Slide 4: Activities -->
-    <div id="slide4" class="slide hidden">
-      <h1 class="text-lg sm:text-xl font-extrabold text-pink-700 mb-1">How do you want to spend the day? ✨</h1>
-      <p class="text-xs text-gray-500 mb-4">Select your favorite vibe!</p>
+  <!-- Bottom Left Bouquet -->
+  <svg class="corner-bouquet left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g transform="rotate(25 100 100)">
+      <path d="M 60 120 L 20 190 Q 60 200 110 180 L 140 110 Z" fill="#fcc6d7" stroke="#392829" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 40 100 L 10 170 Q 50 190 120 150 L 120 90 Z" fill="#f8a7be" stroke="#392829" stroke-width="3" stroke-linejoin="round"/>
       
-      <div class="grid grid-cols-2 gap-3 mb-6 text-left">
-        <!-- Replace card images inside src="..." -->
-        <div onclick="selectCard(this)" class="option-card bg-white p-2.5 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1538510001314-716c02de4324?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
-          <span class="font-bold text-xs text-gray-700">🎳 Bowling</span>
-        </div>
-        <div onclick="selectCard(this)" class="option-card bg-white p-2.5 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
-          <span class="font-bold text-xs text-gray-700">☕ Coffee & Cake</span>
-        </div>
-        <div onclick="selectCard(this)" class="option-card bg-white p-2.5 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
-          <span class="font-bold text-xs text-gray-700">🍿 Movie</span>
-        </div>
-        <div onclick="selectCard(this)" class="option-card bg-white p-2.5 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
-          <span class="font-bold text-xs text-gray-700">🍦 Ice Cream</span>
-        </div>
-      </div>
-      <button onclick="nextSlide(5)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
-        Next →
-      </button>
-    </div>
+      <path d="M 45 75 C 35 55 45 40 55 40 C 60 40 65 48 65 48 C 65 48 70 40 75 40 C 85 40 95 55 85 75 Z" fill="#c9184a" stroke="#392829" stroke-width="3"/>
+      <path d="M 75 60 C 65 40 75 25 85 25 C 90 25 95 33 95 33 C 95 33 100 25 105 25 C 115 25 125 40 115 60 Z" fill="#ff4d6d" stroke="#392829" stroke-width="3"/>
+      <path d="M 105 80 C 95 60 105 45 115 45 C 120 45 125 53 125 53 C 125 53 130 45 135 45 C 145 45 155 60 145 80 Z" fill="#a4133c" stroke="#392829" stroke-width="3"/>
+      
+      <path d="M 55 80 Q 70 110 80 130" stroke="#52b788" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 90 65 Q 90 110 85 130" stroke="#2d6a4f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 120 85 Q 100 110 90 130" stroke="#52b788" stroke-width="5" stroke-linecap="round"/>
+      
+      <path d="M 50 140 C 70 150 90 135 110 130" stroke="#e63946" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
 
-    <!-- Slide 5: Flowers & Gifts -->
-    <div id="slide5" class="slide hidden">
-      <h1 class="text-lg sm:text-xl font-extrabold text-pink-700 mb-1">What am I supposed to show up with? 🎁</h1>
-      <p class="text-xs text-gray-500 mb-4">Pick your favorite!</p>
+  <!-- Bottom Right Bouquet -->
+  <svg class="corner-bouquet right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g transform="rotate(25 100 100)">
+      <path d="M 60 120 L 20 190 Q 60 200 110 180 L 140 110 Z" fill="#fcc6d7" stroke="#392829" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 40 100 L 10 170 Q 50 190 120 150 L 120 90 Z" fill="#f8a7be" stroke="#392829" stroke-width="3" stroke-linejoin="round"/>
+      
+      <path d="M 45 75 C 35 55 45 40 55 40 C 60 40 65 48 65 48 C 65 48 70 40 75 40 C 85 40 95 55 85 75 Z" fill="#c9184a" stroke="#392829" stroke-width="3"/>
+      <path d="M 75 60 C 65 40 75 25 85 25 C 90 25 95 33 95 33 C 95 33 100 25 105 25 C 115 25 125 40 115 60 Z" fill="#ff4d6d" stroke="#392829" stroke-width="3"/>
+      <path d="M 105 80 C 95 60 105 45 115 45 C 120 45 125 53 125 53 C 125 53 130 45 135 45 C 145 45 155 60 145 80 Z" fill="#a4133c" stroke="#392829" stroke-width="3"/>
+      
+      <path d="M 55 80 Q 70 110 80 130" stroke="#52b788" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 90 65 Q 90 110 85 130" stroke="#2d6a4f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 120 85 Q 100 110 90 130" stroke="#52b788" stroke-width="5" stroke-linecap="round"/>
+      
+      <path d="M 50 140 C 70 150 90 135 110 130" stroke="#e63946" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
 
-      <div class="grid grid-cols-2 gap-3 mb-6 text-left">
-        <!-- Replace flower/gift images inside src="..." -->
-        <div onclick="selectCard(this)" class="option-card bg-white p-2.5 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
-          <span class="font-bold text-xs text-gray-700">🌹 Red Roses</span>
-        </div>
-        <div onclick="selectCard(this)" class="option-card bg-white p-2.5 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
-          <span class="font-bold text-xs text-gray-700">🌻 Sunflowers</span>
-        </div>
-        <div onclick="selectCard(this)" class="option-card bg-white p-2.5 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
-          <span class="font-bold text-xs text-gray-700">🌷 Tulips</span>
-        </div>
-        <div onclick="selectCard(this)" class="option-card bg-white p-2.5 rounded-2xl border-2 border-pink-100 flex flex-col items-center shadow-sm hover:border-pink-400 transition transform hover:-translate-y-1 active:scale-95 cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=200" class="w-full h-20 object-cover rounded-xl mb-2">
-          <span class="font-bold text-xs text-gray-700">🍫 Chocolates</span>
-        </div>
-      </div>
-      <button onclick="nextSlide(6)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
-        Next →
-      </button>
-    </div>
-
-    <!-- Slide 6: Date Picker -->
-    <div id="slide6" class="slide hidden">
-      <h1 class="text-lg sm:text-xl font-extrabold text-pink-700 mb-2">Pick a date below 📅</h1>
-      <p class="text-xs text-gray-500 mb-6">So I can clear my schedule!</p>
-      <input type="date" class="border-2 border-pink-300 rounded-2xl p-3 w-full mb-6 font-semibold text-center text-gray-700 focus:outline-none focus:border-pink-500">
-      <button onclick="finishDate()" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
-        Confirm Date 💕
-      </button>
-    </div>
-
-    <!-- Slide 7: Final Screen -->
-    <div id="slide7" class="slide hidden">
-      <!-- PASTE YOUR FINAL CUSTOM IMAGE URL IN THE 'src' BELOW -->
-      <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400" 
-           class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-2xl mx-auto mb-4 shadow-md border-2 border-pink-300" alt="Ending Pic">
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-pink-700 mb-2">See you then! ✨</h1>
-      <p class="text-gray-600 font-medium text-sm sm:text-base">I'm locking it in. Get ready! 🥰</p>
-    </div>
-
-  </div>
-
-  <!-- Error Loop Modal for "No" button -->
-  <div id="errorModal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white p-6 rounded-3xl max-w-xs w-full text-center border-4 border-rose-300 shadow-2xl animate-pop">
-      <h2 class="text-xl font-extrabold text-rose-600 mb-2">Error 404! 🚨</h2>
-      <p class="text-sm text-gray-600 mb-4 font-medium" id="modalText">"No" is not an allowed answer! Please select "Yes" 😉</p>
-      <button onclick="closeModal()" class="bg-rose-500 text-white font-bold py-2 px-6 rounded-full shadow hover:bg-rose-600 transition transform hover:scale-105">
-        Try Again 🔁
-      </button>
-    </div>
-  </div>
-
-  <script>
-    function nextSlide(slideNumber) {
-      document.querySelectorAll('.slide').forEach(el => {
-        el.classList.add('hidden');
-        el.classList.remove('animate-pop');
-      });
-      const next = document.getElementById('slide' + slideNumber);
-      next.classList.remove('hidden');
-      next.classList.add('animate-pop');
-    }
-
-    function sayYes() {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-      nextSlide(3);
-    }
-
-    function finishDate() {
-      confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.5 }
-      });
-      nextSlide(7);
-    }
-
-    function selectCard(card) {
-      card.classList.toggle('ring-4');
-      card.classList.toggle('ring-rose-400');
-      card.classList.toggle('bg-pink-100');
-    }
-
-    const noMessages = [
-      "Error: 'No' is strictly forbidden! 🛑",
-      "Nice try! But you have to click Yes 😉",
-      "System Malfunction: Option 'No' does not exist! 🤖",
-      "Access Denied! Only 'Yes' works here 💕"
-    ];
-    let msgIndex = 0;
-
-    function triggerNoLoop() {
-      document.getElementById('modalText').innerText = noMessages[msgIndex % noMessages.length];
-      msgIndex++;
-      document.getElementById('errorModal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('errorModal').classList.add('hidden');
-    }
-  </script>
 </body>
 </html>
